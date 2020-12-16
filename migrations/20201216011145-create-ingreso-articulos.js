@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { // IngresoArticulo pertenece a ingreso 1:1
-          model: 'Ingreso',
+          model: 'Ingresos',
           key: 'id'
         }
       },
@@ -20,7 +20,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { // IngresoArticulo pertenece a articulo 1:1
-          model: 'Articulo',
+          model: 'Articulos',
           key: 'id'
         }
       },

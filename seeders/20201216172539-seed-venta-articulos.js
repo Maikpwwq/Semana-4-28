@@ -3,14 +3,12 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('VentaArticulos', [{
-      usuarioId: 1,
-      personaId: 1,
-      tipo_comprobante: 'Digital',
-      serie_comprobante: 'OP',
-      num_comprobante: '1',
-      impuesto: 19,
-      total: 200000,
-      estado: 1,
+      ventaId: 1,
+      articuloId: 1,
+      articulo: "Articulo1",
+      cantidad: 3,
+      precio: 500000,
+      descuento: 110000,
       createdAt: new Date(),
       updatedAt: new Date()
     }]);

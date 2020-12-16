@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { // VentaArticulo pertenece a venta 1:1
-          model: 'Venta',
+          model: 'Ventas',
           key: 'id'
         }
       },
@@ -20,7 +20,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { // VentaArticulo pertenece a articulo 1:1
-          model: 'Articulo',
+          model: 'Articulos',
           key: 'id'
         }
       },

@@ -16,14 +16,14 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'ventaId',
         otherKey: 'articuloId'
       });
-      this.belongsTo(models.Persona, { 
-        foreignKey: 'personaId', 
-        as: 'persona' 
-      });
       this.belongsTo(models.Usuario, { 
         foreignKey: 'usuarioId', 
-        as: 'usuario' 
-      });      
+        as: 'detalle-usuario' 
+      }); 
+      this.belongsTo(models.Persona, { 
+        foreignKey: 'personaId', 
+        as: 'detalle-persona' 
+      })           
     }
   };
   Venta.init({
