@@ -6,8 +6,12 @@ const auth = require ('../../middlewares/auth.js');
 
 const router = routerx();
 
+// ruta: '/api/usuario/signin'
+router.get('/list', usuarioController.signin);
+// ruta: '/api/usuario/signup'
+router.post('/add', usuarioController.signup);
 // ruta: '/api/usuario/list'
-router.get('/list', auth.verificarAdministrador, usuarioController.list);
+router.get('/list', usuarioController.list);
 // ruta: '/api/usuario/add'
 router.post('/add', auth.verificarAdministrador, usuarioController.add);
 // ruta: '/api/usuario/activate' Actualiza los datos

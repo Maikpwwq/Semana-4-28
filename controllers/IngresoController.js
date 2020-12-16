@@ -1,6 +1,6 @@
 const db = require('../models');
 
-// registrarIngreso
+// Agregar un Ingreso al sistema
 exports.add = async (req, res, next) => {
     try {    
         const registro = await db.Ingresos.create(req.body);
@@ -13,7 +13,7 @@ exports.add = async (req, res, next) => {
     }  
 };
 
-// listarIngresos
+// Listar los Ingresos del sistema
 exports.listar = async (req, res, next) => {
     try {
         const registros = await db.Ingresos.findAll();
@@ -32,12 +32,18 @@ exports.listar = async (req, res, next) => {
     }  
 };
 
-// actualizarDatos de usuario como cambiarPassword
+// Actualizar los Datos de un Ingreso
 exports.update = async (req, res, next) => {
     try {
         const registro = await db.Ingresos.update({
-            nombre: req.body.nombre,
-            descripcion: req.body.descripcion
+            usuarioId: req.body.usuarioId,
+            personaId: req.body.personaId,
+            tipo_comprobante: req.body.tipo_comprobante,
+            serie_comprobante: req.body.serie_comprobante,
+            num_comprobante: req.body.num_comprobante,
+            impuesto: req.body.impuesto,
+            total: req.body.total
+            // estado: req.body.estado
         }, { 
             where: { id: req.body.id }
         });
@@ -51,7 +57,7 @@ exports.update = async (req, res, next) => {
     }  
 };
 
-// administrarRoles res.status(404).send('User Not Found.');
+// Activar el registro del Ingreso
 exports.activate = async (req, res, next) => {
     try {
         const registro = await db.Ingresos.update({estado:1},{
@@ -66,6 +72,7 @@ exports.activate = async (req, res, next) => {
     }  
 };
 
+// Desactivar el registro del Ingreso
 exports.deactivate = async (req, res, next) => {
     try {
         const registro = await db.Ingresos.update({estado:0},{

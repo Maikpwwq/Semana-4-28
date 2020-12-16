@@ -1,9 +1,9 @@
 const db = require('../models');
 
-// registrarArticulo
+// Adicionar un nuevo Articulo
 exports.add = async (req, res, next) => {
     try {    
-        const registro = await db.Articulo.create(req.body);
+        const registro = await db.Articulos.create(req.body);
         res.status(200).json(registro);
     } catch (error) {
         res.status(401).json({
@@ -13,10 +13,10 @@ exports.add = async (req, res, next) => {
     }  
 };
 
-// listarArticulos
+// Listar los Articulos
 exports.listar = async (req, res, next) => {
     try {
-        const registros = await db.Articulo.findAll(); 
+        const registros = await db.Articulos.findAll(); 
         // Llamar al nombre del modelo categoria sin mostrar el Id
         if (registros) {
             res.status(200).json(registros);
@@ -33,14 +33,17 @@ exports.listar = async (req, res, next) => {
     }  
 };
 
-// actualizarDatos de usuario como cambiarPassword
+// Actualizar los Datos de un Articulo
 exports.update = async (req, res, next) => {
     try {
-        const registro = await db.Articulo.update({
-            categoriaId: req.body.categoria,
+        const registro = await db.Articulos.update({        
+            codigo: req.body.codigo,
             nombre: req.body.nombre,
             descripcion: req.body.descripcion,
-            codigo: req.body.codigo
+            precio_venta: req.body.precio_venta,
+            stock: req.body.stock,
+            // estado: req.body.estado,
+            categoriaId: req.body.categoriaId
         }, { 
             where: { id: req.body.id }
         });
@@ -54,10 +57,10 @@ exports.update = async (req, res, next) => {
     }  
 };
 
-// administrarRoles res.status(404).send('User Not Found.');
+// Activar el registro de un Articulo
 exports.activate = async (req, res, next) => {
     try {
-        const registro = await db.Articulo.update({estado:1},{
+        const registro = await db.Articulos.update({estado:1},{
             where: { id: req.body.id }
         });
         res.status(200).json(registro);
@@ -69,9 +72,10 @@ exports.activate = async (req, res, next) => {
     }  
 };
 
+// Desactivar el registro de un Articulo
 exports.deactivate = async (req, res, next) => {
     try {
-        const registro = await db.Articulo.update({estado:0},{
+        const registro = await db.Articulos.update({estado:0},{
             where: { id: req.body.id }
         });
         res.status(200).json(registro);

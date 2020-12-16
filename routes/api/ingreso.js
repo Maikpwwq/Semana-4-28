@@ -7,7 +7,7 @@ const auth = require ('../../middlewares/auth.js');
 const router = routerx();
 
 // ruta: '/api/almacen/list'
-router.get('/list', auth.verificarAdministrador, ingresoController.list);
+router.get('/list', ingresoController.list);
 // ruta: '/api/almacen/add'
 router.post('/add', auth.verificarAdministrador, ingresoController.add);
 // ruta: '/api/almacen/activate' Actualiza los datos

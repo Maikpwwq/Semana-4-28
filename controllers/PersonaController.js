@@ -1,6 +1,6 @@
 const db = require('../models');
 
-// registrarPersona
+// Agregar una Persona
 exports.add = async (req, res, next) => {
     try {    
         const registro = await db.Personas.create(req.body);
@@ -13,7 +13,7 @@ exports.add = async (req, res, next) => {
     }  
 };
 
-// listarPersonas
+// Listar las Personas
 exports.listar = async (req, res, next) => {
     try {
         const registros = await db.Personas.findAll();
@@ -32,12 +32,18 @@ exports.listar = async (req, res, next) => {
     }  
 };
 
-// actualizarDatos de usuario como cambiarPassword
+// Actualizar los datos de la Persona
 exports.update = async (req, res, next) => {
     try {
         const registro = await db.Personas.update({
+            tipo_persona: req.body.tipo_persona,
             nombre: req.body.nombre,
-            descripcion: req.body.descripcion
+            tipo_documento: req.body.tipo_documento,
+            num_documento: req.body.num_documento,
+            direccion: req.body.direccion,
+            telefono: req.body.telefono,
+            email: req.body.email
+            // estado: req.body.
         }, { 
             where: { id: req.body.id }
         });
@@ -51,7 +57,7 @@ exports.update = async (req, res, next) => {
     }  
 };
 
-// administrarRoles res.status(404).send('User Not Found.');
+// Activar el registro de la Persona
 exports.activate = async (req, res, next) => {
     try {
         const registro = await db.Personas.update({estado:1},{
@@ -66,6 +72,7 @@ exports.activate = async (req, res, next) => {
     }  
 };
 
+// Desactivar el registro de la Persona
 exports.deactivate = async (req, res, next) => {
     try {
         const registro = await db.Personas.update({estado:0},{

@@ -1,6 +1,6 @@
 const db = require('../models');
 
-// registrarCategoria
+// Agregar una nueva Categoria
 exports.add = async (req, res, next) => {
     try {    
         const registro = await db.Categorias.create(req.body);
@@ -13,7 +13,7 @@ exports.add = async (req, res, next) => {
     }  
 };
 
-// listarCategorias
+// Listar las Categorias
 exports.listar = async (req, res, next) => {
     try {
         const registros = await db.Categorias.findAll();
@@ -21,7 +21,7 @@ exports.listar = async (req, res, next) => {
             res.status(200).json(registros);
         } else {
             res.status(404).send({
-                message: 'No existen categorias en el sistema'
+                message: 'No existen categorias registradas en el sistema'
             })
         }        
     } catch (error) {
@@ -32,12 +32,13 @@ exports.listar = async (req, res, next) => {
     }  
 };
 
-// actualizarDatos de usuario como cambiarPassword
+// Actualizar los Datos de una Categoria
 exports.update = async (req, res, next) => {
     try {
         const registro = await db.Categorias.update({
             nombre: req.body.nombre,
             descripcion: req.body.descripcion
+            // estado: req.body.estado
         }, { 
             where: { id: req.body.id }
         });
@@ -51,7 +52,7 @@ exports.update = async (req, res, next) => {
     }  
 };
 
-// administrarRoles res.status(404).send('User Not Found.');
+// Activar el registro de una Categoria
 exports.activate = async (req, res, next) => {
     try {
         const registro = await db.Categorias.update({estado:1},{
@@ -66,6 +67,7 @@ exports.activate = async (req, res, next) => {
     }  
 };
 
+// Desactivar el registro de una Categoria
 exports.deactivate = async (req, res, next) => {
     try {
         const registro = await db.Categorias.update({estado:0},{
