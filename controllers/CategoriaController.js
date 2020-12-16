@@ -14,7 +14,7 @@ exports.add = async (req, res, next) => {
 };
 
 // Listar las Categorias
-exports.listar = async (req, res, next) => {
+exports.list = async (req, res, next) => {
     try {
         const registros = await db.Categorias.findAll();
         if (registros) {

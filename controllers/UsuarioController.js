@@ -60,7 +60,7 @@ exports.signup = async (req, res, next) => {
 };
 
 // Listar los Usuarios
-exports.listar = async (req, res, next) => {
+exports.list = async (req, res, next) => {
     try {
         const users = await db.Usuarios.findAll();
         if (users) {

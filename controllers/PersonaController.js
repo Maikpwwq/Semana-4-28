@@ -14,7 +14,7 @@ exports.add = async (req, res, next) => {
 };
 
 // Listar las Personas
-exports.listar = async (req, res, next) => {
+exports.list = async (req, res, next) => {
     try {
         const registros = await db.Personas.findAll();
         if (registros) {

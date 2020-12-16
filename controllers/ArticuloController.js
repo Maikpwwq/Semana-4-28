@@ -14,10 +14,15 @@ exports.add = async (req, res, next) => {
 };
 
 // Listar los Articulos
-exports.listar = async (req, res, next) => {
+exports.list = async (req, res, next) => {
     try {
-        const registros = await db.Articulos.findAll(); 
-        // Llamar al nombre del modelo categoria sin mostrar el Id
+        const registros = await db.Articulos.findAll({
+            include: [{
+                model: db.Categoria,
+                as: 'Categoria',
+                // atributes: ["id", "nombre", "descripcion"]
+            }],
+        }); 
         if (registros) {
             res.status(200).json(registros);
         } else {
