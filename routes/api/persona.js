@@ -1,5 +1,5 @@
 const routerx = require('express-promise-router');
-const usuarioController = require('../../controllers/UsuarioController.js');
+const usuarioController = require('../../controllers/PersonaController.js');
 
 // middleware verifica los permisos asociados al rol
 const auth = require ('../../middlewares/auth.js');
