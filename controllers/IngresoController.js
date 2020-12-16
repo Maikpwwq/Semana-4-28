@@ -14,7 +14,7 @@ exports.add = async (req, res, next) => {
 };
 
 // Listar los Ingresos del sistema
-exports.listar = async (req, res, next) => {
+exports.list = async (req, res, next) => {
     try {
         const registros = await db.Ingresos.findAll();
         if (registros) {
