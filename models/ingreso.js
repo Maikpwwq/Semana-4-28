@@ -18,11 +18,11 @@ module.exports = (sequelize, DataTypes) => {
       });
       this.belongsTo(models.Persona, { 
         foreignKey: 'personaId', 
-        as: 'persona' 
+        as: 'detalle-persona' 
       });
       this.belongsTo(models.Usuario, {
         foreignKey: 'usuarioId',
-        as: 'usuario'
+        as: 'detalle-usuario'
       });
     }
   };
