@@ -3,7 +3,7 @@ const db = require('../models');
 // Agregar una Persona
 exports.add = async (req, res, next) => {
     try {    
-        const registro = await db.Personas.create(req.body);
+        const registro = await db.persona.create(req.body);
         res.status(200).json(registro);
     } catch (error) {
         res.status(401).json({
@@ -16,7 +16,7 @@ exports.add = async (req, res, next) => {
 // Listar las Personas
 exports.list = async (req, res, next) => {
     try {
-        const registros = await db.Personas.findAll();
+        const registros = await db.persona.findAll();
         if (registros) {
             res.status(200).json(registros);
         } else {
@@ -35,7 +35,7 @@ exports.list = async (req, res, next) => {
 // Actualizar los datos de la Persona
 exports.update = async (req, res, next) => {
     try {
-        const registro = await db.Personas.update({
+        const registro = await db.persona.update({
             tipo_persona: req.body.tipo_persona,
             nombre: req.body.nombre,
             tipo_documento: req.body.tipo_documento,
@@ -60,7 +60,7 @@ exports.update = async (req, res, next) => {
 // Activar el registro de la Persona
 exports.activate = async (req, res, next) => {
     try {
-        const registro = await db.Personas.update({estado:1},{
+        const registro = await db.persona.update({estado:1},{
             where: { id: req.body.id }
         });
         res.status(200).json(registro);
@@ -75,7 +75,7 @@ exports.activate = async (req, res, next) => {
 // Desactivar el registro de la Persona
 exports.deactivate = async (req, res, next) => {
     try {
-        const registro = await db.Personas.update({estado:0},{
+        const registro = await db.persona.update({estado:0},{
             where: { id: req.body.id }
         });
         res.status(200).json(registro);

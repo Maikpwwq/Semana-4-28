@@ -3,7 +3,7 @@ const db = require('../models');
 // Agregar un Ingreso al sistema
 exports.add = async (req, res, next) => {
     try {    
-        const registro = await db.Ingresos.create(req.body);
+        const registro = await db.ingreso.create(req.body);
         res.status(200).json(registro);
     } catch (error) {
         res.status(401).json({
@@ -16,7 +16,7 @@ exports.add = async (req, res, next) => {
 // Listar los Ingresos del sistema
 exports.list = async (req, res, next) => {
     try {
-        const registros = await db.Ingresos.findAll();
+        const registros = await db.ingreso.findAll();
         if (registros) {
             res.status(200).json(registros);
         } else {
@@ -35,7 +35,7 @@ exports.list = async (req, res, next) => {
 // Actualizar los Datos de un Ingreso
 exports.update = async (req, res, next) => {
     try {
-        const registro = await db.Ingresos.update({
+        const registro = await db.ingreso.update({
             usuarioId: req.body.usuarioId,
             personaId: req.body.personaId,
             tipo_comprobante: req.body.tipo_comprobante,
@@ -60,7 +60,7 @@ exports.update = async (req, res, next) => {
 // Activar el registro del Ingreso
 exports.activate = async (req, res, next) => {
     try {
-        const registro = await db.Ingresos.update({estado:1},{
+        const registro = await db.ingreso.update({estado:1},{
             where: { id: req.body.id }
         });
         res.status(200).json(registro);
@@ -75,7 +75,7 @@ exports.activate = async (req, res, next) => {
 // Desactivar el registro del Ingreso
 exports.deactivate = async (req, res, next) => {
     try {
-        const registro = await db.Ingresos.update({estado:0},{
+        const registro = await db.ingreso.update({estado:0},{
             where: { id: req.body.id }
         });
         res.status(200).json(registro);

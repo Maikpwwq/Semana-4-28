@@ -3,7 +3,7 @@ const db = require('../models');
 // Agregar una nueva Categoria
 exports.add = async (req, res, next) => {
     try {    
-        const registro = await db.Categorias.create(req.body);
+        const registro = await db.categoria.create(req.body);
         res.status(200).json(registro);
     } catch (error) {
         res.status(401).json({
@@ -16,7 +16,7 @@ exports.add = async (req, res, next) => {
 // Listar las Categorias
 exports.list = async (req, res, next) => {
     try {
-        const registros = await db.Categorias.findAll();
+        const registros = await db.categoria.findAll();
         if (registros) {
             res.status(200).json(registros);
         } else {
@@ -35,7 +35,7 @@ exports.list = async (req, res, next) => {
 // Actualizar los Datos de una Categoria
 exports.update = async (req, res, next) => {
     try {
-        const registro = await db.Categorias.update({
+        const registro = await db.categoria.update({
             nombre: req.body.nombre,
             descripcion: req.body.descripcion
             // estado: req.body.estado
@@ -55,7 +55,7 @@ exports.update = async (req, res, next) => {
 // Activar el registro de una Categoria
 exports.activate = async (req, res, next) => {
     try {
-        const registro = await db.Categorias.update({estado:1},{
+        const registro = await db.categoria.update({estado:1},{
             where: { id: req.body.id }
         });
         res.status(200).json(registro);
@@ -70,7 +70,7 @@ exports.activate = async (req, res, next) => {
 // Desactivar el registro de una Categoria
 exports.deactivate = async (req, res, next) => {
     try {
-        const registro = await db.Categorias.update({estado:0},{
+        const registro = await db.categoria.update({estado:0},{
             where: { id: req.body.id }
         });
         res.status(200).json(registro);

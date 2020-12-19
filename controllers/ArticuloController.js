@@ -3,7 +3,7 @@ const db = require('../models');
 // Adicionar un nuevo Articulo
 exports.add = async (req, res, next) => {
     try {    
-        const registro = await db.Articulos.create(req.body);
+        const registro = await db.articulo.create(req.body);
         res.status(200).json(registro);
     } catch (error) {
         res.status(401).json({
@@ -16,10 +16,11 @@ exports.add = async (req, res, next) => {
 // Listar los Articulos
 exports.list = async (req, res, next) => {
     try {
-        const registros = await db.Articulos.findAll({
+        const registros = await db.articulo.findAll({
             include: [{
                 model: db.Categoria,
-                as: 'Categoria',
+                as: 'detalle-categoria', // from model categoria
+                required: true, // Registro innerJoin solo a un modelo asociado                
                 // atributes: ["id", "nombre", "descripcion"]
             }],
         }); 
@@ -41,7 +42,7 @@ exports.list = async (req, res, next) => {
 // Actualizar los Datos de un Articulo
 exports.update = async (req, res, next) => {
     try {
-        const registro = await db.Articulos.update({        
+        const registro = await db.articulo.update({        
             codigo: req.body.codigo,
             nombre: req.body.nombre,
             descripcion: req.body.descripcion,
@@ -65,7 +66,7 @@ exports.update = async (req, res, next) => {
 // Activar el registro de un Articulo
 exports.activate = async (req, res, next) => {
     try {
-        const registro = await db.Articulos.update({estado:1},{
+        const registro = await db.articulo.update({estado:1},{
             where: { id: req.body.id }
         });
         res.status(200).json(registro);
@@ -80,7 +81,7 @@ exports.activate = async (req, res, next) => {
 // Desactivar el registro de un Articulo
 exports.deactivate = async (req, res, next) => {
     try {
-        const registro = await db.Articulos.update({estado:0},{
+        const registro = await db.articulo.update({estado:0},{
             where: { id: req.body.id }
         });
         res.status(200).json(registro);

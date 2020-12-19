@@ -3,7 +3,7 @@ const db = require('../models');
 // Adicionar una Venta
 exports.add = async (req, res, next) => {
     try {    
-        const registro = await db.Ventas.create(req.body);
+        const registro = await db.venta.create(req.body);
         res.status(200).json(registro);
     } catch (error) {
         res.status(401).json({
@@ -16,7 +16,7 @@ exports.add = async (req, res, next) => {
 // Listar las Ventas
 exports.list = async (req, res, next) => {
     try {
-        const registros = await db.Ventas.findAll();
+        const registros = await db.venta.findAll();
         if (registros) {
             res.status(200).json(registros);
         } else {
@@ -35,7 +35,7 @@ exports.list = async (req, res, next) => {
 // Actualizar datos de la venta
 exports.update = async (req, res, next) => {
     try {
-        const registro = await db.Ventas.update({
+        const registro = await db.venta.update({
             usuarioId: req.body.usuarioId,
             personaId: req.body.personaId,
             tipo_comprobante: req.body.tipo_comprobante,
@@ -60,7 +60,7 @@ exports.update = async (req, res, next) => {
 // Activar el registro de la venta
 exports.activate = async (req, res, next) => {
     try {
-        const registro = await db.Ventas.update({estado:1},{
+        const registro = await db.venta.update({estado:1},{
             where: { id: req.body.id }
         });
         res.status(200).json(registro);
@@ -75,7 +75,7 @@ exports.activate = async (req, res, next) => {
 // Desactivar el registro de la venta
 exports.deactivate = async (req, res, next) => {
     try {
-        const registro = await db.Ventas.update({estado:0},{
+        const registro = await db.venta.update({estado:0},{
             where: { id: req.body.id }
         });
         res.status(200).json(registro);

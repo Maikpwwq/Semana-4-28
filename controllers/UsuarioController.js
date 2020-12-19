@@ -8,7 +8,7 @@ const tokenServices = require('../services/token')
 exports.signin = async (req, res, next) => {
     try {
         
-        const user = await db.Usuarios.findOne({ 
+        const user = await db.usuario.findOne({ 
             where: { email: req.body.email }
         });
 
@@ -48,12 +48,21 @@ exports.signin = async (req, res, next) => {
 // Registro de Usuario
 exports.signup = async (req, res, next) => {
     try {
-        req.body.password = bcrypt.hashSync(req.body.password, 10);
-        const user = await db.Usuarios.create(req.body);
-        res.status(200).json(user);
-    } catch (error) {
-        res.status(401).json({
-            message: 'Error al registrar el usuario con estos datos' + error
+        const user = await db.usuario.findOne({ 
+            where: { email: req.body.email }
+        });
+        if (user) {
+            res.status(409).send({
+                message: 'error, la solicitud entra en conflicto con la base de datos',
+            })
+        } else {
+            req.body.password = bcrypt.hashSync(req.body.password, 10);
+            const user = await db.usuario.create(req.body);
+            res.status(200).json(user);        
+        }
+    } catch ( error ) {
+        res.status(500).send({
+            message: 'Error ->' + error
         });
         next(error)
     }  
@@ -62,7 +71,7 @@ exports.signup = async (req, res, next) => {
 // Listar los Usuarios
 exports.list = async (req, res, next) => {
     try {
-        const users = await db.Usuarios.findAll();
+        const users = await db.usuario.findAll();
         if (users) {
             res.status(200).json(users);
         } else {
@@ -81,7 +90,7 @@ exports.list = async (req, res, next) => {
 // Adicionar un Usuario
 exports.add = async (req, res, next) => {
     try {    
-        const registro = await db.Usuarios.create(req.body);
+        const registro = await db.usuario.create(req.body);
         res.status(200).json(registro);
     } catch (error) {
         res.status(401).json({
@@ -94,10 +103,11 @@ exports.add = async (req, res, next) => {
 // Actualizar los datos del Usuario
 exports.update = async (req, res, next) => {
     try {
-        const user = await db.Usuarios.update({            
+        req.body.password = bcrypt.hashSync(req.body.password, 10);
+        const user = await db.usuario.update({            
             rol: req.body.rol,
             nombre: req.body.nombre,
-            password: bcrypt.hashSync(req.body.password, 10),
+            password: req.body.password,
             email: req.body.email,
             tipo_documento: req.body.tipo_documento,
             num_documento: req.body.num_documento,
@@ -120,7 +130,7 @@ exports.update = async (req, res, next) => {
 // Activar el registro del Usuario
 exports.activate = async (req, res, next) => {
     try {
-        const registro = await db.Usuarios.update({estado:1},{
+        const registro = await db.usuario.update({estado:1},{
             where: { id: req.body.id }
         });
         res.status(200).json(registro);
@@ -135,7 +145,7 @@ exports.activate = async (req, res, next) => {
 // Desactivar el registro del Usuario
 exports.deactivate = async (req, res, next) => {
     try {
-        const registro = await db.Usuarios.update({estado:0},{
+        const registro = await db.usuario.update({estado:0},{
             where: { id: req.body.id }
         });
         res.status(200).json(registro);
