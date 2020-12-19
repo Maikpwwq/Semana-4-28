@@ -1,12 +1,12 @@
 const jwt = require('jsonwebtoken');
 const models = require('../models');
 const config = require('../secret/config.js');
-
+ 
 const checkToken = async ( token ) => {
     let localID = null;
     
     try {
-        const { id } = await token.decode(token);
+        const { id } = token.decode(token);
         localID = id;
     } catch ( error ) {
         return false;
@@ -15,7 +15,7 @@ const checkToken = async ( token ) => {
     console.log( localID );
 
     const user = await models.usuario.findOne({
-        where: { id: localID, status: 1 }
+        where: { id: localID, estado: 1 }
     }); 
     
     if ( user ) {
@@ -33,10 +33,10 @@ module.exports = {
     encode: async(user) => {
         const token = jwt.sign({
             id: user.id,
-            name: user.name,
+            name: user.nombre,
             email: user.email,
             rol: user.rol,
-            status: user.status
+            estado: user.estado
         }, config.secret , {
             // Expira en x segundos
             expiresIn: 86400,
@@ -48,7 +48,7 @@ module.exports = {
             //const {id, name, email, rol, estado}
             const { id } = await jws.verify(token, config.secret); 
             const user = await db.usuario.findOne({
-                where: { id: id, status: 1 }
+                where: { id: id, estado: 1 }
             });
             if (user) {
                 return user

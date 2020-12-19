@@ -53,7 +53,7 @@ exports.signup = async (req, res, next) => {
         });
         if (user) {
             res.status(409).send({
-                message: 'error, la solicitud entra en conflicto con la base de datos',
+                message: 'error, la cuenta de correo ya se encuentra registrada',
             })
         } else {
             req.body.password = bcrypt.hashSync(req.body.password, 10);
@@ -76,7 +76,7 @@ exports.list = async (req, res, next) => {
             res.status(200).json(users);
         } else {
             res.status(404).send({
-                message: 'No existen Ventas en el sistema'
+                message: 'No existen usuarios en el sistema'
             })
         }    
     } catch (error) {
@@ -90,6 +90,7 @@ exports.list = async (req, res, next) => {
 // Adicionar un Usuario
 exports.add = async (req, res, next) => {
     try {    
+        req.body.password = bcrypt.hashSync(req.body.password, 10);
         const registro = await db.usuario.create(req.body);
         res.status(200).json(registro);
     } catch (error) {

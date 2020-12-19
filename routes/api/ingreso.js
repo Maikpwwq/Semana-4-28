@@ -1,10 +1,8 @@
-const routerx = require('express-promise-router');
+const router = require('express').Router();
 const ingresoController = require('../../controllers/IngresoController.js');
 
 // middleware verifica los permisos asociados al rol
 const auth = require ('../../middlewares/auth.js');
-
-const router = routerx();
 
 // ruta: '/api/almacen/list'
 router.get('/list', ingresoController.list);

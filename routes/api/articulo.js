@@ -1,10 +1,7 @@
-/* un Ejemplo  de como se veria la ruta listar - modelo del  articulo*/
-const routerx = require('express-promise-router');
-const articuloController = require('../controllers/ArticuloController');
+const router = require('express').Router();
+const articuloController = require('../../controllers/ArticuloController');
 // middleware verifica los permisos asociados al rol
-const auth = require('../middlewares/auth');
-
-const router = routerx();
+const auth = require('../../middlewares/auth');
 
 // ruta: '/api/articulo/list'
 router.get('/list', articuloController.list);

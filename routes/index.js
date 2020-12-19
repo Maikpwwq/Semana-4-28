@@ -1,4 +1,4 @@
-const routerx = require('express-promise-router');
+const router = require('express').Router();
 
 // Api Consume end ponints
 const categoriaRouter = require('./api/categoria');
@@ -7,8 +7,6 @@ const ingresoRouter = require('./api/ingreso');
 const ventaRouter = require('./api/venta');
 const personaRouter = require('./api/persona');
 const usuarioRouter = require('./api/usuario');
-
-const router = routerx();
 
 router.use('/categoria', categoriaRouter);
 router.use('/articulo', articuloRouter);
