@@ -51,7 +51,6 @@ describe('Articulos Endpoints', () => {
                 descripcion: 'lorem limpsus update',
                 codigo: '22225',
                 id: 1
-
             })
         expect(res.statusCode).toEqual(200)
     })

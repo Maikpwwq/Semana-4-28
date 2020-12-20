@@ -7,12 +7,12 @@ const auth = require ('../../middlewares/auth.js');
 // ruta: '/api/almacen/list'
 router.get('/list', ingresoController.list);
 // ruta: '/api/almacen/add'
-router.post('/add', auth.verificarAdministrador, ingresoController.add);
+router.post('/add', auth.verificarAlmacenero, ingresoController.add);
 // ruta: '/api/almacen/activate' Actualiza los datos
-router.put('/update', auth.verificarAdministrador, ingresoController.update);
+router.put('/update', auth.verificarAlmacenero, ingresoController.update);
 // ruta: '/api/almacen/activate' Cambia status: 1
-router.put('/activate', auth.verificarAdministrador, ingresoController.activate);
+router.put('/activate', auth.verificarAlmacenero, ingresoController.activate);
 // ruta: '/api/almacen/deactivate' Cambia status: 0
-router.put('/deactivate', auth.verificarAdministrador, ingresoController.deactivate);
+router.put('/deactivate', auth.verificarAlmacenero, ingresoController.deactivate);
 
 module.exports = router;

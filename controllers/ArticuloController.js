@@ -18,7 +18,7 @@ exports.list = async (req, res, next) => {
     try {
         const registros = await db.articulo.findAll({
             include: [{
-                model: db.Categoria,
+                model: db.categoria,
                 as: 'detalle-categoria', // from model categoria
                 required: true, // Registro innerJoin solo a un modelo asociado                
                 // atributes: ["id", "nombre", "descripcion"]

@@ -5,27 +5,28 @@ const bcrypt = require('bcryptjs');
 const tokenServices = require('../services/token')
 
 // Inicio de Sesion de usuario
-exports.signin = async (req, res, next) => {
+exports.login = async (req, res, next) => {
     try {
         
         const user = await db.usuario.findOne({ 
-            where: { email: req.body.email }
+            where: { email: req.body.email, estado:1 }
         });
 
         if (user) {
-            const passwordIsValid = bcrypt.compareSync( req.body.password, user.password );
+            const passwordIsValid = await bcrypt.compareSync( req.body.password, user.password );
 
             if (passwordIsValid) {
                 const token = await tokenServices.encode( user );
                 
                 res.status(200).send({
                     auth: true,
-                    accessToken: token
+                    tokenReturn: token, //accessToken
+                    user: user
                 });
             } else {
                 res.status(401).send({
                     auth: false,
-                    accessToken: null,
+                    tokenReturn: null,
                     error: 'Contraseña invalida'
                 });
             };

@@ -5,7 +5,7 @@ const usuarioController = require('../../controllers/UsuarioController.js');
 const auth = require ('../../middlewares/auth.js');
 
 // ruta: '/api/usuario/signin'
-router.post('/signin', usuarioController.signin);
+router.post('/login', usuarioController.login);
 // ruta: '/api/usuario/signup'
 router.post('/signup', usuarioController.signup);
 // ruta: '/api/usuario/list'

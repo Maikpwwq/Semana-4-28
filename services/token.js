@@ -6,7 +6,7 @@ const checkToken = async ( token ) => {
     let localID = null;
     
     try {
-        const { id } = token.decode(token);
+        const { id } = await token.decode(token);
         localID = id;
     } catch ( error ) {
         return false;
@@ -47,7 +47,7 @@ module.exports = {
         try {
             //const {id, name, email, rol, estado}
             const { id } = await jws.verify(token, config.secret); 
-            const user = await db.usuario.findOne({
+            const user = await models.usuario.findOne({
                 where: { id: id, estado: 1 }
             });
             if (user) {

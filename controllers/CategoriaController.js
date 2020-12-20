@@ -37,7 +37,8 @@ exports.update = async (req, res, next) => {
     try {
         const registro = await db.categoria.update({
             nombre: req.body.nombre,
-            descripcion: req.body.descripcion
+            descripcion: req.body.descripcion,
+            codigo: req.body.codigo,
             // estado: req.body.estado
         }, { 
             where: { id: req.body.id }
