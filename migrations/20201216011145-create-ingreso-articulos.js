@@ -14,7 +14,9 @@ module.exports = {
         references: { // IngresoArticulo pertenece a ingreso 1:1
           model: 'Ingresos',
           key: 'id'
-        }
+        },
+        //onUpdate: 'CASCADE',
+        //onDelete: 'SET NULL'
       },
       articuloId: {
         type: Sequelize.INTEGER,
@@ -22,7 +24,9 @@ module.exports = {
         references: { // IngresoArticulo pertenece a articulo 1:1
           model: 'Articulos',
           key: 'id'
-        }
+        },
+        //onUpdate: 'CASCADE',
+        //onDelete: 'SET NULL'
       },
       articulo: {
         type: Sequelize.STRING

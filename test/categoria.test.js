@@ -43,7 +43,7 @@ describe('Categoria Endpoints', () => {
             .send({
                 nombre: 'articulo_test_update',
                 descripcion: 'lorem limpsus update',
-                codigo: '22225',
+                //codigo: '22225',
                 id: 1
 
             })

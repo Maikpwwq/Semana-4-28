@@ -14,7 +14,9 @@ module.exports = {
         references: { // Venta pertenece a usuario 1:1
           model: 'Usuarios',
           key: 'id'
-        }
+        },
+        //onUpdate: 'CASCADE',
+        //onDelete: 'SET NULL'
       },
       personaId: {
         type: Sequelize.INTEGER,
@@ -22,7 +24,9 @@ module.exports = {
         references: { // Venta pertenece a persona 1:1
           model: 'Personas',
           key: 'id'
-        }
+        },
+        //onUpdate: 'CASCADE',
+        //onDelete: 'SET NULL'
       },
       tipo_comprobante: {
         type: Sequelize.STRING
