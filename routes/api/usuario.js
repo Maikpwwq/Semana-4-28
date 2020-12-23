@@ -12,7 +12,11 @@ router.post('/signup', usuarioController.signup);
 router.get('/list', usuarioController.list);
 // ruta: '/api/usuario/add'
 router.post('/add', auth.verificarAdministrador, usuarioController.add);
-// ruta: '/api/usuario/activate' Actualiza los datos
+// ruta: '/api/usuario/query' Consulta una usuario por Id
+router.get('/query', auth.verificarAdministrador, usuarioController.query);
+// ruta: '/api/usuario/queryCodigo' Consulta 
+router.get('/queryCodigo', auth.verificarAdministrador, usuarioController.queryCodigo);
+// ruta: '/api/usuario/update' Actualiza los datos de la usuario
 router.put('/update', auth.verificarAdministrador, usuarioController.update);
 // ruta: '/api/usuario/activate' Cambia status: 1
 router.put('/activate', auth.verificarAdministrador, usuarioController.activate);

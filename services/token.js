@@ -6,20 +6,18 @@ const checkToken = async ( token ) => {
     let localID = null;
     
     try {
-        const { id } = await token.decode(token);
-        localID = id;
+        const { _id } = await jwt.decode(token);
+        localID = _id;
     } catch ( error ) {
         return false;
     };
-    
-    console.log( localID );
 
     const user = await models.usuario.findOne({
         where: { id: localID, estado: 1 }
     }); 
     
     if ( user ) {
-        const token = encode(user);
+        const token = await encode(user.id, user.rol);
         return {
             token, 
             rol: user.rol
@@ -30,25 +28,24 @@ const checkToken = async ( token ) => {
 };
 
 module.exports = {
-    encode: async(user) => {
+    //generar el token
+    encode: async (id, rol) => {
         const token = jwt.sign({
-            id: user.id,
-            name: user.nombre,
-            email: user.email,
-            rol: user.rol,
-            estado: user.estado
+            id: id,
+            rol: rol        
         }, config.secret , {
-            // Expira en x segundos
+            // Expira en 24 horas
             expiresIn: 86400,
         });
         return token
     },
+    //permite decodificar el token
     decode: async(token) => {
         try {
             //const {id, name, email, rol, estado}
-            const { id } = await jws.verify(token, config.secret); 
+            const { id } = await jwt.verify(token, config.secret); 
             const user = await models.usuario.findOne({
-                where: { id: id, estado: 1 }
+                where: { id: id} //estado: 1 
             });
             if (user) {
                 return user

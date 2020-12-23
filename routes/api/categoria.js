@@ -6,9 +6,13 @@ const auth = require ('../../middlewares/auth.js');
 
 // ruta: '/api/categoria/list'
 router.get('/list', categoriaController.list);
-// ruta: '/api/categoria/add'
+// ruta: '/api/categoria/add' Agergar nueva categoria
 router.post('/add', auth.verificarAlmacenero, categoriaController.add);
-// ruta: '/api/categoria/activate' Actualiza los datos
+// ruta: '/api/categoria/query' Consulta una categoria por Id
+router.get('/query', auth.verificarAlmacenero, categoriaController.query);
+// ruta: '/api/categoria/queryCodigo' Consulta 
+router.get('/queryCodigo', auth.verificarAlmacenero, categoriaController.queryCodigo);
+// ruta: '/api/categoria/update' Actualiza los datos de la categoria
 router.put('/update', auth.verificarAlmacenero, categoriaController.update);
 // ruta: '/api/categoria/activate' Cambia status: 1
 router.put('/activate', auth.verificarAlmacenero, categoriaController.activate);

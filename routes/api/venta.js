@@ -8,7 +8,11 @@ const auth = require ('../../middlewares/auth.js');
 router.get('/list', ventaController.list);
 // ruta: '/api/tienda/add'
 router.post('/add', auth.verificarVendedor, ventaController.add);
-// ruta: '/api/tienda/activate' Actualiza los datos
+// ruta: '/api/venta/query' Consulta una venta por Id
+router.get('/query', auth.verificarVendedor, ventaController.query);
+// ruta: '/api/venta/queryCodigo' Consulta 
+router.get('/queryCodigo', auth.verificarVendedor, ventaController.queryCodigo);
+// ruta: '/api/venta/update' Actualiza los datos de la venta
 router.put('/update', auth.verificarVendedor, ventaController.update);
 // ruta: '/api/tienda/activate' Cambia status: 1
 router.put('/activate', auth.verificarVendedor, ventaController.activate);

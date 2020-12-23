@@ -8,7 +8,11 @@ const auth = require ('../../middlewares/auth.js');
 router.get('/list', personaController.list);
 // ruta: '/api/usuario/add'
 router.post('/add', auth.verificarAdministrador, personaController.add);
-// ruta: '/api/usuario/activate' Actualiza los datos
+// ruta: '/api/persona/query' Consulta una persona por Id
+router.get('/query', auth.verificarAdministrador, personaController.query);
+// ruta: '/api/persona/queryCodigo' Consulta 
+router.get('/queryCodigo', auth.verificarAdministrador, personaController.queryCodigo);
+// ruta: '/api/persona/update' Actualiza los datos de la persona
 router.put('/update', auth.verificarAdministrador, personaController.update);
 // ruta: '/api/usuario/activate' Cambia status: 1
 router.put('/activate', auth.verificarAdministrador, personaController.activate);

@@ -32,7 +32,9 @@ module.exports = {
         references: { // Articulo pertenece a categoria 1:1
           model: 'Categorias',
           key: 'id'
-        }
+        },
+        //onUpdate: 'CASCADE',
+        //onDelete: 'SET NULL'
       },
       createdAt: {
         allowNull: false,
