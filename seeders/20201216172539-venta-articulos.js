@@ -5,8 +5,8 @@ module.exports = {
     return queryInterface.bulkInsert('VentaArticulos', [{
       ventaId: 1,
       articuloId: 1,
-      articulo: "Articulo1",
-      cantidad: 3,
+      proyecto: 'Proyecto1',
+      descripcion: 'Registre el objetivo del proyecto',
       precio: 500000,
       descuento: 110000,
       createdAt: new Date(),

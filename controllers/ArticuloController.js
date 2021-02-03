@@ -27,7 +27,7 @@ module.exports = {
                         model: db.categoria,
                         as: 'detalle-categoria', // from model categoria
                         required: true, // Registro innerJoin solo a un modelo asociado                
-                        // atributes: ["id", "nombre", "descripcion"]
+                        atributes: ["nombre", "descripcion"]
                     }],
                 }); 
                 if (registros) {
@@ -114,9 +114,7 @@ module.exports = {
                 const registro = await db.articulo.update({        
                     codigo: req.body.codigo,
                     nombre: req.body.nombre,
-                    descripcion: req.body.descripcion,
-                    precio_venta: req.body.precio_venta,
-                    stock: req.body.stock,
+                    descripcion: req.body.descripcion,                    
                     categoriaId: req.body.categoriaId
                 }, { 
                     where: { id: req.body.id }

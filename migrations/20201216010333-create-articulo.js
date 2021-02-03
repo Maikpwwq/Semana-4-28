@@ -17,12 +17,6 @@ module.exports = {
       descripcion: {
         type: Sequelize.STRING
       },
-      precio_venta: {
-        type: Sequelize.INTEGER
-      },
-      stock: {
-        type: Sequelize.INTEGER
-      },
       estado: {
         type: Sequelize.INTEGER
       },

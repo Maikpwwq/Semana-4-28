@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       usuarioId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER, 
         allowNull: false,
         references: { // Venta pertenece a usuario 1:1
           model: 'Usuarios',

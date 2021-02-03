@@ -28,13 +28,13 @@ module.exports = {
         //onUpdate: 'CASCADE',
         //onDelete: 'SET NULL'
       },
-      articulo: {
+      proyecto: {
         type: Sequelize.STRING
       },
-      cantidad: {
-        type: Sequelize.INTEGER
+      descripcion: {
+        type: Sequelize.STRING
       },
-      precio: {
+      precio: { 
         type: Sequelize.INTEGER
       },
       descuento: {
