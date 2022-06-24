@@ -6,7 +6,7 @@ const checkToken = async ( token ) => {
     let localID = null;
     
     try {
-        const { _id } = await jwt.decode(token);
+        const { _id } = await decode(token);
         localID = _id;
     } catch ( error ) {
         return false;
@@ -41,11 +41,12 @@ module.exports = {
     },
     //permite decodificar el token
     decode: async(token) => {
+        // si el token esta vencido genere uno nuevo, caso contrario retornar falso
         try {
             //const {id, name, email, rol, estado}
             const { id } = await jwt.verify(token, config.secret); 
             const user = await models.usuario.findOne({
-                where: { id: id} //estado: 1 
+                where: { id: id, estado: 1}
             });
             if (user) {
                 return user

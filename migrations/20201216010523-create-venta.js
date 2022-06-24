@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Ventas', {
+    await queryInterface.createTable('venta', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -9,10 +9,10 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       usuarioId: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.INTEGER, 
         allowNull: false,
         references: { // Venta pertenece a usuario 1:1
-          model: 'Usuarios',
+          model: 'usuarios',
           key: 'id'
         },
         //onUpdate: 'CASCADE',
@@ -22,7 +22,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { // Venta pertenece a persona 1:1
-          model: 'Personas',
+          model: 'personas',
           key: 'id'
         },
         //onUpdate: 'CASCADE',
@@ -57,6 +57,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Ventas');
+    await queryInterface.dropTable('venta');
   }
 };

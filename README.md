@@ -1,29 +1,24 @@
-# Proyecto Final 
+# Proyecto Final MisionTic 2022
 
-Facilitar una tienda virtual para la venta de productos y servicios. Proyecto: 19. Sistemas modernos de tratamientos de aguas residuales.
-Infraestructuras para plantas de tratamiento de aguas residuales PTAR y Estaciones depuradoras de aguas residuales (EDARS’s).
+Proyecto: 19. Facilitar una tienda virtual para la venta de productos y servicios. Plantas de tratamiento de aguas residuales (PTAR), Plantas de tratamiento de Residuos Industriales Líquidos (RILES) y Estaciones depuradoras de aguas residuales (EDARS).”
 
 ## Justificación 
 
-Con el objetivo de estimular el desarrollo de proyectos municipales en Mejora y recuperación del agua, Reducción energética y de costes operacionales y Minimización de la producción de lodos. 
+El ciclo del agua en la naturaleza que todos conocemos en el que existen procesos de evaporación, condensación y precipitación es un ciclo que tiene su cierre con intervención del ser humano a través de los procesos de Captación, tratamiento, Distribución, Uso, Colección, Tratamiento de reutilización y finalmente Descarga. 
 
-Ofrecemos servicios Integrales de consultoría, ingeniería y optimización de procesos con generación de efluente. Brindamos capacitaciones y el servicio de mantenimiento y operación de plantas nuevas y existentes, así como acompañamiento en la puesta en marcha de nuevas estaciones.
+Con el objetivo de estimular el desarrollo de proyectos municipales para la mejora y recuperación del agua, la reducción energética y de costes operacionales y, la minimización de la producción de lodos. A través de nuestro sitio web ofrecemos servicios de consultoría en ingeniería y gestión de proyectos con generación de efluentes interviniendo en su etapa de tratamiento para reutilización y saneamiento. 
+
+Brindamos capacitaciones y el servicio de mantenimiento y operación de plantas de tratamiento de aguas nuevas y existentes, así como acompañamiento en la puesta en marcha de nuevas estaciones.
 
 ## Sprint Final Semana V
 
-Facilitar una tienda de servicios para la venta de sistemas para el tratamiento de aguas residuales y sistema de tratamiento de Residuos Industriales Líquidos (RILES), por medio de un sitio web para usuarios compradores, con CRUD de administrador de categorías y artículos.
+Se desarrollo un sitio web (https://frontend-tratamiento-aguas.herokuapp.com/) el cual consta de: una landing page con login de usuario, una página para el administrador de los usuarios, productos y servicios que son registrados en la tienda, los datos son almacenados remotamente en una base de datos SQL y consumidos por medio de la Api donde se despliega el Backend del proyecto. 
 
-La zona de administración debe contar inicialmente con la gestión o CRUD de Usuarios, Artículos y Categorías y, posteriormente se implementará la gestión de e-commerce.
+La zona de administración debe contar inicialmente con la gestión o CRUD de Usuarios, Artículos, Categorías y Ventas, posteriormente se implementará la gestión de e-commerce.
  
-Recopilar los requerimientos de la marca según modelo de negocios para desarrollar el backend y el Frontend del sitio Web (secciones Header, Portafolio, casos de éxito o testimonios y footer.).
-
 ## Equipo 28 integrantes:
 
--	Daniel Alejandro Eslava Avendaño
--	Heywin Hernando Meneses Perez
--	Carlos Eduardo Ruiz Pacheco
 -	Michael Arias Fajardo
--   Fabián Tadeo Henao Escalante
 
 ## Actividades 
 

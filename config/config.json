@@ -1,10 +1,14 @@
 {
-    "development": {
+    "development2": {
         "username": "Nj23kiUT8W",
         "password": "3EzWB2a45X",
         "database": "Nj23kiUT8W",
         "host": "remotemysql.com",
         "dialect": "mysql"
+    },
+    "development": {
+        "dialect": "sqlite",
+        "storage": "./database.sqlite3"
     },
     "test": {
         "dialect": "sqlite",

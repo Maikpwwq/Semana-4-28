@@ -18,5 +18,6 @@ router.put('/update', auth.verificarAlmacenero, categoriaController.update);
 router.put('/activate', auth.verificarAlmacenero, categoriaController.activate);
 // ruta: '/api/categoria/deactivate' Cambia status: 0
 router.put('/deactivate', auth.verificarAlmacenero, categoriaController.deactivate);
+router.delete('/remove', categoriaController.remove);
 
 module.exports = router;
