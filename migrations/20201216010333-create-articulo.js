@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Articulos', {
+    await queryInterface.createTable('articulos', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -24,7 +24,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { // Articulo pertenece a categoria 1:1
-          model: 'Categorias',
+          model: 'categoria',
           key: 'id'
         },
         //onUpdate: 'CASCADE',
@@ -41,6 +41,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Articulos');
+    await queryInterface.dropTable('articulos');
   }
 };

@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Articulos', [
+    return queryInterface.bulkInsert('articulos', [
       {
         codigo: 'ProcesosTecnológicos-01',
         nombre: 'Tratamiento primario.  Reducción de nutrientes y lodos.',
@@ -34,6 +34,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Articulos', null, {});
+    return queryInterface.bulkInsert('articulos', null, {});
   }
 };

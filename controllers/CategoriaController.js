@@ -18,7 +18,7 @@ module.exports = {
             next(error)
         }  
     },
-
+ 
     // Listar las Categorias
     list : async (req, res, next) => {
         try {
