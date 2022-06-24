@@ -22,6 +22,7 @@ describe('Articulos Endpoints', () => {
     it('listas de articulos', async() => {
         const res = await request(app)
             .get('/api/articulo/list')
+            .set('token', token)
         expect(res.statusCode).toEqual(200)
 
     })
@@ -51,7 +52,6 @@ describe('Articulos Endpoints', () => {
                 descripcion: 'lorem limpsus update',
                 codigo: '22225',
                 id: 1
-
             })
         expect(res.statusCode).toEqual(200)
     })

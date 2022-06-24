@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('VentaArticulos', {
+    await queryInterface.createTable('ventaArticulos', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -12,23 +12,27 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { // VentaArticulo pertenece a venta 1:1
-          model: 'Ventas',
+          model: 'venta',
           key: 'id'
-        }
+        },
+        //onUpdate: 'CASCADE',
+        //onDelete: 'SET NULL'
       },
       articuloId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: { // VentaArticulo pertenece a articulo 1:1
-          model: 'Articulos',
+          model: 'articulos',
           key: 'id'
-        }
+        },
+        //onUpdate: 'CASCADE',
+        //onDelete: 'SET NULL'
       },
-      articulo: {
+      proyecto: {
         type: Sequelize.STRING
       },
-      cantidad: {
-        type: Sequelize.INTEGER
+      descripcion: {
+        type: Sequelize.STRING
       },
       precio: {
         type: Sequelize.INTEGER
@@ -47,6 +51,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('VentaArticulos');
+    await queryInterface.dropTable('ventaArticulos');
   }
 };
