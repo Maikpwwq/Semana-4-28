@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.belongsTo(models.categoria, { 
         foreignKey: 'categoriaId', 
-        as: 'detalle-categoria'  
+        as: 'detalle_categoria'  
       });      
     }
   };

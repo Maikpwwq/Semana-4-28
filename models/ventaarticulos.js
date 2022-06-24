@@ -13,12 +13,12 @@ module.exports = (sequelize, DataTypes) => {
       
       this.belongsTo(models.venta, { 
         foreignKey: 'ventaId', 
-        as: 'detalle-venta' 
+        as: 'detalle_venta' 
       });
 
       this.belongsTo(models.articulo, { 
         foreignKey: 'articuloId', 
-        as: 'detalle-articulo' 
+        as: 'detalle_articulo' 
       })
       
     }

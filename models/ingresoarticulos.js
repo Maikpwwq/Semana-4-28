@@ -12,11 +12,11 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.belongsTo(models.ingreso, { 
         foreignKey: 'ingresoId', 
-        as: 'detalle-ingreso' 
+        as: 'detalle_ingreso' 
       });
       this.belongsTo(models.articulo, { 
         foreignKey: 'articuloId', 
-        as: 'detalle-articulo' 
+        as: 'detalle_articulo' 
       })
     }
   };

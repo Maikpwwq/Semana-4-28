@@ -12,17 +12,17 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.belongsToMany(models.articulo, {
         through: 'ingresoArticulos',
-        as: 'detalle-ingreso-articulos',
+        as: 'detalle_ingreso_articulos',
         foreignKey: 'ingresoId',
         otherKey: 'articuloId'
       });
       this.belongsTo(models.persona, { 
         foreignKey: 'personaId', 
-        as: 'detalle-persona' 
+        as: 'detalle_persona' 
       });
       this.belongsTo(models.usuario, {
         foreignKey: 'usuarioId',
-        as: 'detalle-usuario'
+        as: 'detalle_usuario'
       });
     }
   };

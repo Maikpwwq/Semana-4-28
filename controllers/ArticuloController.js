@@ -25,7 +25,7 @@ module.exports = {
                 const registros = await db.articulo.findAll({
                     include: [{
                         model: db.categoria,
-                        as: 'detalle-categoria', // from model categoria
+                        as: 'detalle_categoria', // from model categoria
                         required: true, // Registro innerJoin solo a un modelo asociado                
                         atributes: ["nombre", "descripcion"]
                     }],
@@ -50,7 +50,7 @@ module.exports = {
             try {
                 const reg = await db.articulo.findOne({ 
                     id: req.query.id 
-                }).populate('detalle-categoria', {nombre:1});
+                }).populate('detalle_categoria', {nombre:1});
         
                 if (!reg) {
                     res.status(404).send({
@@ -72,7 +72,7 @@ module.exports = {
             try {
                 const reg = await db.articulo.findOne({ 
                     codigo: req.query.codigo 
-                }).populate('detalle-categoria', { nombre: 1 });
+                }).populate('detalle_categoria', { nombre: 1 });
         
                 if (!reg) {
                     res.status(404).send({
